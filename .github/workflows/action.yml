@@ -21,8 +21,8 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: qa
-          base: develop
+          branch: develop
+          base: qa
           delete-branch: false
           title: '[Auto pr] Auto promotion'
           body: |
