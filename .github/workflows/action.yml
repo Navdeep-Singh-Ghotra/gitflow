@@ -21,7 +21,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: qa
+          branch: qa, staging
           base: develop
           delete-branch: false
           title: '[Auto pr] Auto promotion'
@@ -39,7 +39,6 @@ jobs:
           team-reviewers: |
             owners
             maintainers
-          milestone: 1
           draft: false
 
       - name: Check outputs
