@@ -1,4 +1,4 @@
-name: Automatic promtion
+name: Automatic promtion to qa
 on:
   push:
     branches:
@@ -21,7 +21,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: qa, staging
+          branch: qa
           base: develop
           delete-branch: false
           title: '[Auto pr] Auto promotion'
@@ -35,7 +35,7 @@ jobs:
             report
             automated pr
           assignees: navdeep-singh-ghotra
-          reviewers: navdeep-singh-ghotra
+          reviewers: navdeep-singh-ghotra 
           team-reviewers: |
             owners
             maintainers
