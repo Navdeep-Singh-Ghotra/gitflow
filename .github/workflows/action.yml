@@ -22,7 +22,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           branch: develop
-          base: qa
+          base: qa, staging
           delete-branch: false
           title: '[Auto pr] Auto promotion'
           body: |
