@@ -1,4 +1,4 @@
-name: PR for release branch
+name: Automatic promtion
 on:
   push:
     branches:
