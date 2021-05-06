@@ -21,9 +21,10 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: example-patches
-          delete-branch: true
-          title: '[Example] Update report'
+          branch: qa
+          base: develop
+          delete-branch: false
+          title: '[Auto pr] Auto promotion'
           body: |
             Update report
             - Updated with *today's* date
