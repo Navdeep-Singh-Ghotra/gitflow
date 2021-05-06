@@ -1,8 +1,8 @@
 name: Automatic promtion
-  on:
-    push:
-      branches:
-        - develop
+on:
+  push:
+    branches:
+      - develop
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
