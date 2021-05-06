@@ -35,7 +35,7 @@ jobs:
             report
             automated pr
           assignees: navdeep-singh-ghotra
-          reviewers: navdeep-singh-ghotra
+          reviewers: navdeep-singh-ghotra 
           team-reviewers: |
             owners
             maintainers
