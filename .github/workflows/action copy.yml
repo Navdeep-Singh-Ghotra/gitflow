@@ -1,15 +1,18 @@
-name: Automatic promtion to qa
+name: Automatic promtion to staging
 on:
   pull_request:
     types:
       - closed
     branches:
-      - develop
+      - qa
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Make changes to pull request
+        run: date +%s > report.txt
 
       - name: Create Pull Request
         id: cpr
@@ -21,7 +24,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           branch: qa
-          base: develop
+          base: staging
           delete-branch: false
           title: '[Auto pr] Auto promotion'
           body: |
