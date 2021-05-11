@@ -1,8 +1,8 @@
-name: Automatic promtion to staging
+name: Automatic promtion to prod
 on:
-  pull_request:
+  push:
     branches:
-      - qa
+      - staging
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
@@ -21,8 +21,8 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: qa
-          base: staging
+          branch: staging
+          base: prod
           delete-branch: false
           title: '[Auto pr] Auto promotion'
           body: |
