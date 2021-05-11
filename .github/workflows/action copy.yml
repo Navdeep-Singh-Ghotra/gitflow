@@ -1,6 +1,8 @@
 name: Automatic promtion to staging
 on:
   pull_request:
+    types:
+      - closed
     branches:
       - qa
 jobs:
