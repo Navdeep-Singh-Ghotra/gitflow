@@ -1,6 +1,8 @@
 name: Automatic promtion to qa
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - develop
 jobs:
