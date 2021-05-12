@@ -10,35 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Make changes to pull request
-        run: date +%s > report.txt
-
-      - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v3
-        with:
-          ref: qa
+          with:
+          ref: staging
       - name: Reset promotion branch
         run: |
           git fetch origin qa:qa
           git reset --hard qa
-
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
           branch: staging-promotion
-          labels: |
-            report
-            automated pr
-          assignees: navdeep-singh-ghotra
-          reviewers: navdeep-singh-ghotra 
-          team-reviewers: |
-            owners
-            maintainers
-          draft: false
-
       - name: Check outputs
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
