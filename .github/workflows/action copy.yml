@@ -16,6 +16,7 @@ jobs:
         run: |
           git fetch origin qa:qa
           git reset --hard qa
+
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
