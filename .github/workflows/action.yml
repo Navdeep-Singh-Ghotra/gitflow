@@ -1,20 +1,29 @@
-name: Automatic promtion
+name: Automatic promtion to qa
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - develop
 jobs:
-  release_pull_request:
+  createPullRequest:
     runs-on: ubuntu-latest
-    name: release_pull_request
     steps:
-    - name: checkout
-      uses: actions/checkout@v2
-    - name: Create PR to branch
-      uses: peter-evans/create-pull-request@v3
-      with:
-        pr_branch: 'qa'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITBOT_EMAIL: <BOT_EMAIL>
-        DRY_RUN: false
+      - uses: actions/checkout@v2
+        with:
+          ref: qa
+      - name: Reset promotion branch
+        run: |
+          git fetch origin develop:develop
+          git reset --hard develop
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: qa-promotion
+          
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
