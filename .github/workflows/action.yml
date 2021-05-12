@@ -16,14 +16,14 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Update report
+          commit-message: promote dev to qa on closed pull request on dev
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           branch: qa
           base: develop
           delete-branch: false
-          title: '[Auto pr] Auto promotion'
+          title: '[Auto pr] Auto promotion to qa once dev pr is closed'
           body: |
             Update report
             - Updated with *today's* date
