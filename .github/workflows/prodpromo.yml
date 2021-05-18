@@ -16,7 +16,6 @@ jobs:
         run: |
           git fetch origin staging:staging
           git reset --hard staging
-
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
