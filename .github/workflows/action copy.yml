@@ -1,0 +1,28 @@
+name: Automatic promtion to staging
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - qa
+jobs:
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: staging
+      - name: Reset promotion branch
+        run: |
+          git fetch origin qa:qa
+          git reset --hard qa
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: staging-promotion
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
