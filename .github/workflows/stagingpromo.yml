@@ -20,7 +20,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: staging-promotion
+          branch: qa
       - name: Check outputs
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
